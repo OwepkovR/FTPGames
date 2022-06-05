@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="ru.owepkovr.freetoplaygames.ui.splash.SplashFragment"
+        android:label="splash_fragment"
+        tools:layout="@layout/splash_fragment" />
+    <fragment
+        android:id="@+id/gamesListFragment"
+        android:name="ru.owepkovr.freetoplaygames.ui.gameslist.GamesListFragment"
+        android:label="fragment_games_list_list"
+        tools:layout="@layout/fragment_games_list_list" />
+
+    <action
+        android:id="@+id/action_gameslist"
+        app:destination="@+id/gamesListFragment"/>
+
+    <action
+        android:id="@+id/action_splash"
+        app:destination="@id/splashFragment"
+        app:popUpTo="@id/main"
+        app:popUpToInclusive="true" />
+</navigation>
