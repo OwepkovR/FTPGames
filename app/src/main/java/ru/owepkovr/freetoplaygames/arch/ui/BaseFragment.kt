@@ -3,6 +3,7 @@ package ru.owepkovr.freetoplaygames.arch.ui
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.os.NetworkOnMainThreadException
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.annotation.MainThread
@@ -15,10 +16,13 @@ import freetoplaygames.R
 import org.koin.android.ext.android.inject
 import ru.owepkovr.freetoplaygames.arch.handler.ErrorMessageHandler
 import ru.owepkovr.freetoplaygames.arch.navigation.NavigationRouter
+import ru.owepkovr.freetoplaygames.arch.network.NetworkErrorHandler
+import ru.owepkovr.freetoplaygames.data.model.ui.NetworkErrorUIModel
 
 abstract class BaseFragment<out T : BaseViewModel<*>>(@LayoutRes layoutId: Int) : Fragment(layoutId) {
 
-    private val networkErrorMessageHandler: ErrorMessageHandler by inject()
+    private val networkErrorHandler: NetworkErrorHandler by inject()
+    private val errorMessageHandler: ErrorMessageHandler by inject()
     private var progressDialog: Dialog? = null
 
     abstract val viewModel: T
@@ -54,6 +58,19 @@ abstract class BaseFragment<out T : BaseViewModel<*>>(@LayoutRes layoutId: Int) 
         viewModel.navigationLive.observe(viewLifecycleOwner) {
             NavigationRouter.navigate(findNavController(), it, getParams())
         }
+        networkErrorHandler.networkErrorLive.observe(viewLifecycleOwner) {
+            handleNetworkError(it)
+        }
+    }
+
+    private fun handleNetworkError(errorData: NetworkErrorUIModel) {
+        AlertDialog.Builder(requireContext())
+            .setPositiveButton("OK") { dialog, i ->
+                dialog.dismiss()
+            }
+            .setTitle(errorData.title)
+            .setMessage(errorData.body)
+            .show()
     }
 
     fun showProgressDialog(context: Context, cancelable: Boolean = false) {
@@ -72,6 +89,6 @@ abstract class BaseFragment<out T : BaseViewModel<*>>(@LayoutRes layoutId: Int) 
     }
 
     fun showErrorMessage(message: String) {
-        networkErrorMessageHandler.showErrorMessage(message)
+        errorMessageHandler.showErrorMessage(message)
     }
 }
