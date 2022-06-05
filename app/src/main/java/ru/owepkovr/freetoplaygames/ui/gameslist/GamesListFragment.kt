@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import by.kirich1409.viewbindingdelegate.viewBinding
 import freetoplaygames.R
 import freetoplaygames.databinding.FragmentGamesListListBinding
@@ -29,6 +30,15 @@ class GamesListFragment : BaseFragment<GamesListViewModel>(R.layout.fragment_gam
     override fun initViews() {
         initObservers()
         binding.recyclerView.adapter = adapter
+
+        binding.swipeRefreshLayout.apply {
+            setOnRefreshListener {
+                isRefreshing = false
+                records = mutableListOf()
+                viewModel.getGamesList()
+            }
+        }
+
         viewModel.getGamesList()
     }
 
@@ -47,12 +57,17 @@ class GamesListFragment : BaseFragment<GamesListViewModel>(R.layout.fragment_gam
     }
 
     fun renderData(state: GamesListViewState) {
-        records = state.data as MutableList<GameUIModel>
+        if (state.data != null) {
+            records = state.data as MutableList<GameUIModel>
+        }
         adapter.setItems(records)
         if (state.isLoading) {
             showProgressDialog(requireContext())
         } else {
             hideProgressDialog()
+        }
+        if (state.errorMessage != null) {
+            Toast.makeText(requireContext(), state.errorMessage, Toast.LENGTH_LONG).show()
         }
     }
 }

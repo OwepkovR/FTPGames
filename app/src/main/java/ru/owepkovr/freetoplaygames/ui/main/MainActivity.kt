@@ -12,7 +12,9 @@ import freetoplaygames.R
 import freetoplaygames.databinding.ActivityMainBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity: AppCompatActivity(R.layout.activity_main), NavController.OnDestinationChangedListener {
+
+class MainActivity : AppCompatActivity(R.layout.activity_main),
+    NavController.OnDestinationChangedListener {
 
     private val binding: ActivityMainBinding by viewBinding(R.id.activity_main)
     private val viewModel: MainViewModel by viewModel()
@@ -31,7 +33,7 @@ class MainActivity: AppCompatActivity(R.layout.activity_main), NavController.OnD
     override fun onDestinationChanged(
         controller: NavController,
         destination: NavDestination,
-        arguments: Bundle?
+        arguments: Bundle?,
     ) {
         TODO("Not yet implemented")
     }
