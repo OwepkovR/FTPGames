@@ -55,7 +55,7 @@ private fun provideOkHttpClient(
     writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
     addInterceptor(loggingInterceptor)
     addInterceptor(ChuckerInterceptor(context))
-    addInterceptor(getHeadersInterceptor())
+    addInterceptor(headersInterceptor())
     addInterceptor(networkErrorInterceptor)
 }.build()
 
@@ -73,7 +73,7 @@ private fun createMoshiConverterFactory(): MoshiConverterFactory {
     return MoshiConverterFactory.create(moshi).asLenient()
 }
 
-private fun getHeadersInterceptor() : Interceptor {
+private fun headersInterceptor() : Interceptor {
     return Interceptor { chain ->
         val builder = chain.request().newBuilder()
 
