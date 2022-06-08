@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "934333415118",
+    "project_id": "ftpgames-ddf29",
+    "storage_bucket": "ftpgames-ddf29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934333415118:android:5ac18baf4955bec4651a9f",
+        "android_client_info": {
+          "package_name": "ru.owepkovr.freetoplaygames"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934333415118-hh7sfebtk9qmqp57ve1o90e8mgai597e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqV2wpePuvh0a8VVP0IVvRa8URr7dMx_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934333415118-hh7sfebtk9qmqp57ve1o90e8mgai597e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
