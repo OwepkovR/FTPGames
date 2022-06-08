@@ -33,40 +33,22 @@ jobs:
           name: app
           path: app/build/outputs/apk/dev/debug/app-debug.apk
 
-      build:
-        name: Upload apk to App Tester
-        runs-on: ubuntu-latest
+  build:
+    name: Upload apk to App Tester
+    runs-on: ubuntu-latest
 
-        steps:
-          - uses: actions/checkout@v1
-          - name: set up JDK 11
-            uses: actions/setup-java@v1
-            with:
-              java-version: 11
-          - name: build release
-            run: bash ./gradlew assembleDebug
-          - name: upload artifact to Firebase App Distribution
-            uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
-            with:
-              appId: ${{ secrets.FIREBASE_ID }}
-              token: ${{ secrets.FIREBASE_TOKEN }}
-              groups: cicd
-              file: app/build/outputs/apk/dev/debug/app-debug.apk
-
-        apk:
-          name: Generate APK
-          runs-on: ubuntu-latest
-
-          steps:
-            - uses: actions/checkout@v1
-            - name: set up JDK 11
-              uses: actions/setup-java@v1
-              with:
-                java-version: 11
-            - name: Build debug APK
-              run: bash ./gradlew assembleDebug --stacktrace
-            - name: Upload APK
-              uses: actions/upload-artifact@v1
-              with:
-                name: app
-                path: app/build/outputs/apk/dev/debug/app-debug.apk
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: build debug
+        run: bash ./gradlew assembleDebug
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
+        with:
+          appId: ${{ secrets.FIREBASE_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: cicd
+          file: app/build/outputs/apk/dev/debug/app-debug.apk
