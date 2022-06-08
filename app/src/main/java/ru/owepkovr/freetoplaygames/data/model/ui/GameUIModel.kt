@@ -15,7 +15,7 @@ data class GameUIModel(
     val publisher: String?,
     val developer: String?,
     val releaseDate: String?,
-    val freetogameProfileUrl: String?
+    val freetogameProfileUrl: String?,
 ) : RecyclerViewItem {
     override fun getId(): Any {
         return id

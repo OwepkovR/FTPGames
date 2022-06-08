@@ -24,5 +24,5 @@ data class Game(
     @field:Json(name = "release_date")
     val releaseDate: String,
     @field:Json(name = "freetogame_profile_url")
-    val freetogameProfileUrl: String
+    val freetogameProfileUrl: String,
 )

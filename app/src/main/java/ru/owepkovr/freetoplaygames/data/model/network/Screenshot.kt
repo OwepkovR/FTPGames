@@ -6,5 +6,5 @@ data class Screenshot(
     @field:Json(name = "id")
     val id: String?,
     @field:Json(name = "image")
-    val image: String?
+    val image: String?,
 )

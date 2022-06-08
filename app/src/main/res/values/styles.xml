@@ -10,6 +10,9 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
     <style name="titleTv" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="descriptionTv" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">10sp</item>
     </style>
     <style name="defaultCardView" parent="CardView">
