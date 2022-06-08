@@ -10,5 +10,5 @@ interface Api {
     fun getGame(@Query("id") id: String): Call<SingleGameInfo>
 
     @GET("/api/games")
-    fun getGamesList() : Call<List<Game>>
+    fun getGamesList(): Call<List<Game>>
 }
