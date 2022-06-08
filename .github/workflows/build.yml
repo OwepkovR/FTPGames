@@ -20,9 +20,8 @@ jobs:
         with: {java-version: 1.8}
       - name: Build release APK after test
         run: |
-          chmod +x ./gradlew test
-          chmod +x ./gradlew assembleRelease
-          chmod +x ./gradlew bundleRelease
+          chmod +x ./gradlew assembleDebug
+          chmod +x ./gradlew bundleDebug
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
