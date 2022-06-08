@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintTop_toBottomOf="@id/toolbar"
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <com.yanzhenjie.recyclerview.SwipeRecyclerView
+        android:id="@+id/recyclerView"
+        android:name="freetoplaygames.GamesListFragment"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="ru.owepkovr.freetoplaygames.ui.gameslist.GamesListFragment"
+        tools:listitem="@layout/games_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.yanzhenjie.recyclerview.SwipeRecyclerView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

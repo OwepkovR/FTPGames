@@ -32,7 +32,6 @@ val networkModule = module {
     single(named(OKHTTP_QUALIFIER)) { provideOkHttpClient(androidContext(), get(), get()) }
     single(named(RETROFIT_QUALIFIER)) { provideRetrofit(get(named(OKHTTP_QUALIFIER)), BuildConfig.BASE_URL) }
     single { get<Retrofit>(named(RETROFIT_QUALIFIER)).create(Api::class.java) }
-    single { NetworkRepository(get()) }
     single {
         HttpLoggingInterceptor().apply {
             level = if (BuildConfig.DEBUG) {

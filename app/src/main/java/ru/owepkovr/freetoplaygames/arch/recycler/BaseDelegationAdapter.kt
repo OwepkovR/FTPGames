@@ -4,7 +4,7 @@ import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 
 class BaseDelegationAdapter(
-    vararg adapterDelegates: AdapterDelegate<List<RecyclerViewItem>>
+    vararg adapterDelegates: AdapterDelegate<List<RecyclerViewItem>>,
 ) : AsyncListDifferDelegationAdapter<RecyclerViewItem>(DiffUtilCallback) {
 
     init {

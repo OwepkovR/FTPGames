@@ -30,11 +30,13 @@ class GamesListViewModel(
                     }.render()
                 }
             } catch (e: Exception) {
-                state.apply {
-                    errorMessage = e.message
-                    isLoading = false
-                }.render()
-                Log.e("networkError", e.message.toString())
+                withContext(Dispatchers.Main) {
+                    state.apply {
+                        errorMessage = e.message
+                        isLoading = false
+                    }.render()
+                    Log.e("networkError", e.message.toString())
+                }
             }
         }
     }
