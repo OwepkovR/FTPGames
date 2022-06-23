@@ -21,6 +21,7 @@ import ru.owepkovr.freetoplaygames.ui.main.MainActivity
  */
 class GamesListFragment : BaseFragment<GamesListViewModel>(R.layout.fragment_games_list_list) {
 
+    // test CD
     private var records: MutableList<GameUIModel> = mutableListOf()
     private val adapter by lazy { createAdapter() }
     private val binding: FragmentGamesListListBinding by viewBinding()
